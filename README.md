@@ -160,11 +160,10 @@ Produces structured reports with:
 |----------|----------|-------------|
 | `SNOWFLAKE_ACCOUNT` | Yes | Your Snowflake account identifier |
 | `SNOWFLAKE_USERNAME` | Yes | Snowflake username |
-| `SNOWFLAKE_PASSWORD` | Conditional | Password (if not using private key) |
 | `SNOWFLAKE_DATABASE` | Yes | Target database name |
 | `SNOWFLAKE_WAREHOUSE` | Yes | Snowflake warehouse |
 | `SNOWFLAKE_SCHEMA` | Yes | Target schema name |
-| `NS_PRIVATE_KEY` | Conditional | Private key (if not using password) |
+| `NS_PRIVATE_KEY` | Conditional | Private key |
 | `ANTHROPIC_API_KEY` | Optional | Anthropic Claude API key |
 | `OPENAI_API_KEY` | Optional | OpenAI API key |
 
