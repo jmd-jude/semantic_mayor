@@ -1,0 +1,17 @@
+## Analysis of AA_ID Overlap Patterns
+
+### 1. What we learned:
+- **Limited complete overlap**: Only ~6% of AA_IDs (30.4M out of ~525M total) appear in all three tables, split across multiple rows due to LISTAGG ordering variations
+- **Significant data silos**: 68% of AA_IDs exist in only one table (358.9M AA_IDs), indicating substantial system isolation
+- **Two-table overlap**: ~26% appear in exactly two tables, showing partial integration between systems
+- **LAL_AA_FIELDS_EXTRACT dominance**: Given the 490M AA_IDs in this table vs 155M and 18M in others, most single-table AA_IDs likely come from the profile data system
+
+### 2. Implications:
+- **Fragmented user tracking**: The majority of users (68%) exist in only one system, suggesting incomplete cross-system user journey tracking
+- **Integration gaps**: Low complete overlap (6%) indicates potential blind spots where user behavior across audience matching, lookalike modeling, and profile systems isn't fully connected
+- **System specialization**: Each table serves distinct user populations, with LAL_AA_FIELDS_EXTRACT capturing the broadest user base while LAL_HISTORY_DETAIL has the most selective coverage
+
+### 3. Next directions:
+- **Investigate single-table distributions**: Determine which specific table contains the 358.9M isolated AA_IDs
+- **Analyze user journey completeness**: Examine whether users with complete overlap (all 3 tables) show different engagement or conversion patterns
+- **Profile data coverage**: Investigate why LAL_AA_FIELDS_EXTRACT has 3x more AA_IDs than the other systems combined

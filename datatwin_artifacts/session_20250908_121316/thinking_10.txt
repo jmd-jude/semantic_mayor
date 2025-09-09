@@ -1,0 +1,19 @@
+## Analysis of Combined Segment Performance
+
+### 1. What we learned:
+- **Homeowner '8' + Age 35-44 + Children's purchases** creates our highest-performing segment at **6.73% success rate** - nearly 10x the baseline (0.71%)
+- The top 2 segments are both Homeowner '8' + Age 35-44 combinations, confirming this demographic intersection is premium
+- Homeowner 'R' (likely renters) can still achieve 2-4% success rates when combined with optimal age groups (35-44, 65-74) and high-ticket categories
+- Confidence scores are notably higher for top performers (0.55, 0.38) vs lower performers (0.02-0.23), suggesting model certainty aligns with actual performance
+
+### 2. Implications:
+- **Volume-quality trade-off is stark**: Our best segment (6.73% success) only has 104 records (0.12% of data), while larger segments perform much worse
+- **Homeowner '8' is genuinely premium** but extremely rare - only appears in top 2 segments with tiny volumes
+- **Age 35-44 consistently outperforms across homeowner types**, appearing in 3 of top 4 segments
+- The model's confidence scoring appears well-calibrated - higher confidence correlates with better actual outcomes
+
+### 3. Next directions:
+- **Immediate action**: Target the Homeowner '8' + Age 35-44 segments despite small volume - ROI justifies the focus
+- **Scale strategy**: Investigate Homeowner 'R' + Age 35-44/65-74 segments for volume plays at 2-3% success rates
+- **Feature engineering**: Explore if we can identify characteristics that make Homeowner '8' special to find similar prospects in larger populations
+- **Campaign design**: Develop specialized messaging for Children's and High-Ticket Home categories within these age groups

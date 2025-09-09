@@ -1,0 +1,19 @@
+1. What we learned:
+- Strong skew in contact frequency: 57,929 individuals (majority) have single contact, dropping sharply to 9,412 with two contacts
+- Success rate pattern is notable: increases from 0.82% (single contact) to 22.73% (five contacts)
+- Average date range is mostly small (mostly <0.33), suggesting clustered contacts
+- Consistently seeing avg_unique_bubbles ≈ 1, indicating minimal bubble diversity per individual
+
+2. Implications:
+- Campaign appears to be primarily single-touch, with selective multiple contacts
+- Multiple contacts correlate strongly with higher success (22.73% vs 0.82%), suggesting potential benefits of follow-up
+- Short date ranges indicate rapid follow-up strategy rather than long-term nurturing
+- Single-bubble targeting suggests specialized/focused campaign approach rather than cross-category marketing
+
+3. Next directions:
+- Analyze the timing between contacts for multi-contact individuals
+- Investigate which specific bubbles are associated with higher success rates
+- Examine whether successful conversions typically occur early or late in contact sequence
+- Study characteristics of individuals receiving 4-5 contacts (high success group) vs single contacts
+
+This suggests focusing next query on temporal patterns and bubble-specific success rates, particularly for multi-contact cases.

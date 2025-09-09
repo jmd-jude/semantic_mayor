@@ -1,0 +1,12 @@
+# Core dependencies
+pandas>=1.5.0
+snowflake-connector-python>=3.0.0
+python-dotenv>=1.0.0
+
+# Cryptography for Snowflake private key auth
+cryptography>=41.0.0
+
+# LLM providers (choose one or both)
+anthropic>=0.25.0
+openai>=1.0.0
+streamlit>=1.30.0

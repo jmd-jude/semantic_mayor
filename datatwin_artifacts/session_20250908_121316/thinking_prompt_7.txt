@@ -1,0 +1,62 @@
+You have just run the following SQL query as part of your database exploration:
+
+```sql
+SELECT 
+  AGE,
+  COUNT(*) as record_count,
+  ROUND(COUNT(*) * 100.0 / 90424, 2) as pct_of_records,
+  COUNT(DISTINCT INDIVIDUALID) as unique_individuals,
+  SUM(TARGET) as successful_targets,
+  ROUND(SUM(TARGET) * 100.0 / COUNT(*), 2) as success_rate_pct,
+  ROUND(AVG(CONFIDENCE_LEVEL), 2) as avg_confidence,
+  -- Homeowner code '8' overlap analysis
+  SUM(CASE WHEN HOMEOWNER = '8' THEN 1 ELSE 0 END) as homeowner_8_count,
+  ROUND(SUM(CASE WHEN HOMEOWNER = '8' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as pct_homeowner_8
+FROM DM_CAMPAIGN
+WHERE AGE IS NOT NULL
+GROUP BY AGE
+ORDER BY success_rate_pct DESC
+```
+
+Your initial reasoning was:
+After discovering that wealth-based micro-segmentation creates statistically insignificant sample sizes, I need to step back and analyze individual demographic dimensions with sufficient volume. AGE is a critical demographic variable that should have meaningful sample sizes per category. This query will:
+
+1. **Identify age-based success patterns** with statistically significant volumes, unlike the over-segmented wealth combinations
+2. **Cross-reference with homeowner code '8'** - our best-performing segment - to see if certain age groups correlate with this high-value homeowner status
+3. **Establish baseline age demographics** to understand the campaign's target population age distribution
+4. **Validate confidence score patterns** across age groups to see if the low confidence issue is universal or age-specific
+
+This builds directly on previous findings by focusing on a single dimension (AGE) that should provide actionable insights with sufficient statistical power, while also exploring the relationship with our known high-performing homeowner segment. It addresses the key blind spot of understanding which age groups drive campaign success and whether the premium homeowner code '8' customers cluster in specific age ranges.
+
+The query returned a DataFrame with 7 rows and 9 columns.
+Here's a sample of the results (showing first 5 rows):
+
+```
+     AGE  RECORD_COUNT PCT_OF_RECORDS  UNIQUE_INDIVIDUALS  SUCCESSFUL_TARGETS SUCCESS_RATE_PCT AVG_CONFIDENCE  HOMEOWNER_8_COUNT PCT_HOMEOWNER_8
+0  35-44         15006          16.60               11732                 162             1.08           0.13                500            3.33
+1  45-54         14868          16.44               12004                 124             0.83           0.08                123            0.83
+2  55-64         17905          19.80               14431                 132             0.74           0.05                 45            0.25
+3  25-34         10292          11.38                7796                  75             0.73           0.19                983            9.55
+4  65-74         16848          18.63               13395                 117             0.69           0.04                 35            0.21
+```
+
+And some basic statistics (limited to prevent context overflow):
+```
+       RECORD_COUNT  UNIQUE_INDIVIDUALS  SUCCESSFUL_TARGETS  HOMEOWNER_8_COUNT
+count      7.000000            7.000000            7.000000           7.000000
+mean   12580.714286         9982.714286           96.142857         256.714286
+std     5654.311916         4563.044879           52.824958         360.636805
+min     1247.000000          961.000000            8.000000          35.000000
+25%    11095.500000         8678.000000           65.000000          40.000000
+50%    14868.000000        11732.000000          117.000000          76.000000
+75%    15927.000000        12699.500000          128.000000         311.500000
+max    17905.000000        14431.000000          162.000000         983.000000
+```
+
+Based on these results, provide your analysis in this format:
+1. What we learned: Key insights from this query
+2. Implications: What these results tell us about the data structure or business patterns
+3. Next directions: What areas these results suggest we should explore next
+
+Make your analysis specific to the actual data you see in the results, referring to concrete values and patterns.
+Keep your response concise to avoid context length issues in future queries.

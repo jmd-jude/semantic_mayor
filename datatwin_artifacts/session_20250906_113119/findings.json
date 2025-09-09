@@ -1,0 +1,486 @@
+[
+  {
+    "type": "learned",
+    "finding": "Dataset has 90,424 records but only 71,734 unique individuals, indicating multiple records per person"
+  },
+  {
+    "type": "learned",
+    "finding": "Very low target rate (0.78%, 709 positive cases)"
+  },
+  {
+    "type": "learned",
+    "finding": "Missing data varies by field:"
+  },
+  {
+    "type": "learned",
+    "finding": "Gender: 462 missing (99.5% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Age: 2,359 missing (97.4% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Income: 5,159 missing (94.3% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Credit Rating: 27,644 missing (69.4% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Political Affiliation: 37,844 missing (58.1% complete)"
+  },
+  {
+    "type": "implications",
+    "finding": "Significant data quality issues in credit rating and political affiliation fields"
+  },
+  {
+    "type": "implications",
+    "finding": "Severe class imbalance in target variable will require special handling"
+  },
+  {
+    "type": "implications",
+    "finding": "Average of 1.26 records per individual (90,424/71,734) suggests repeated interactions"
+  },
+  {
+    "type": "implications",
+    "finding": "Basic demographic data (gender, age, income) is relatively complete"
+  },
+  {
+    "type": "learned",
+    "finding": "Strong skew in contact frequency: 57,929 individuals (majority) have single contact, dropping sharply to 9,412 with two contacts"
+  },
+  {
+    "type": "learned",
+    "finding": "Success rate pattern is notable: increases from 0.82% (single contact) to 22.73% (five contacts)"
+  },
+  {
+    "type": "learned",
+    "finding": "Average date range is mostly small (mostly <0.33), suggesting clustered contacts"
+  },
+  {
+    "type": "learned",
+    "finding": "Consistently seeing avg_unique_bubbles \u2248 1, indicating minimal bubble diversity per individual"
+  },
+  {
+    "type": "implications",
+    "finding": "Campaign appears to be primarily single-touch, with selective multiple contacts"
+  },
+  {
+    "type": "implications",
+    "finding": "Multiple contacts correlate strongly with higher success (22.73% vs 0.82%), suggesting potential benefits of follow-up"
+  },
+  {
+    "type": "implications",
+    "finding": "Short date ranges indicate rapid follow-up strategy rather than long-term nurturing"
+  },
+  {
+    "type": "implications",
+    "finding": "Single-bubble targeting suggests specialized/focused campaign approach rather than cross-category marketing"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze the timing between contacts for multi-contact individuals"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate which specific bubbles are associated with higher success rates"
+  },
+  {
+    "type": "next",
+    "finding": "Examine whether successful conversions typically occur early or late in contact sequence"
+  },
+  {
+    "type": "next",
+    "finding": "Study characteristics of individuals receiving 4-5 contacts (high success group) vs single contacts"
+  },
+  {
+    "type": "learned",
+    "finding": "Success rates are generally low (1.19-2.62%) across all bubbles"
+  },
+  {
+    "type": "learned",
+    "finding": "Top performers (Social Climbers, Hometown Heroes, Jet Setters) have success rates >2.4%"
+  },
+  {
+    "type": "learned",
+    "finding": "Contact intensity is fairly consistent (1.2-1.33 contacts per individual)"
+  },
+  {
+    "type": "learned",
+    "finding": "Data coverage varies significantly:"
+  },
+  {
+    "type": "learned",
+    "finding": "Credit coverage: 69-77%"
+  },
+  {
+    "type": "learned",
+    "finding": "Political coverage: much more variable (11-67%)"
+  },
+  {
+    "type": "learned",
+    "finding": "All shown bubbles have the same typical income category ('O')"
+  },
+  {
+    "type": "learned",
+    "finding": "Confidence levels are surprisingly low (0.09-0.22)"
+  },
+  {
+    "type": "implications",
+    "finding": "The narrow range in avg_contacts_per_individual suggests a standardized contact strategy"
+  },
+  {
+    "type": "implications",
+    "finding": "The large variation in political_coverage (especially Social Climbers at 11%) indicates systematic data collection differences between bubbles"
+  },
+  {
+    "type": "implications",
+    "finding": "Success rates don't seem strongly correlated with bubble size (Jet Setters has high volume and success rate)"
+  },
+  {
+    "type": "implications",
+    "finding": "Higher confidence levels might correlate with success (Jet Setters has highest confidence at 0.22)"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze why Social Climbers succeeds despite low political coverage"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate if there's a statistical correlation between confidence levels and success rates"
+  },
+  {
+    "type": "next",
+    "finding": "Look for patterns in the timing/sequence of contacts in high-performing bubbles"
+  },
+  {
+    "type": "next",
+    "finding": "Examine whether the consistent typical_income ('O') holds true for lower-performing bubbles not shown in this sample"
+  },
+  {
+    "type": "learned",
+    "finding": "Data coverage is consistently high for basic demographics (gender ~99%, age ~97%, income ~94%) regardless of contact frequency"
+  },
+  {
+    "type": "learned",
+    "finding": "Much lower coverage for political affiliation (~55%) and credit rating (~68%)"
+  },
+  {
+    "type": "learned",
+    "finding": "Confidence scores are consistently higher for successful contacts (0.200 vs 0.123 for single contacts)"
+  },
+  {
+    "type": "learned",
+    "finding": "The vast majority of cases are in lower contact frequencies (57,455 single-contact failures vs only 474 successes)"
+  },
+  {
+    "type": "implications",
+    "finding": "The campaign has strong baseline data collection practices for fundamental demographics"
+  },
+  {
+    "type": "implications",
+    "finding": "Lower coverage of credit/political data suggests these are supplemental data sources rather than primary collection"
+  },
+  {
+    "type": "implications",
+    "finding": "Higher confidence scores in successful cases implies the targeting model is working, but could be more aggressive"
+  },
+  {
+    "type": "implications",
+    "finding": "The large disparity in group sizes between successes/failures indicates potential targeting inefficiency"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze the relationship between confidence scores and actual success rates to validate the model's effectiveness"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate cases with high confidence scores that failed to understand why the model's prediction was incorrect"
+  },
+  {
+    "type": "next",
+    "finding": "Examine whether combining credit and political data coverage improves success prediction"
+  },
+  {
+    "type": "next",
+    "finding": "Look into whether certain demographic combinations yield better success rates"
+  },
+  {
+    "type": "learned",
+    "finding": "Contrary to expectations, higher confidence scores show only marginally better success rates (1.23% at confidence=2 vs 0.75% at confidence=0)"
+  },
+  {
+    "type": "learned",
+    "finding": "Data coverage paradoxically decreases with confidence (96.23% core demo coverage at confidence=0 vs 40.10% at confidence=2)"
+  },
+  {
+    "type": "learned",
+    "finding": "\"Life in the Fast Lane\" bubble dominates high-confidence predictions, while \"Wealth Whispers\" is most common in low-confidence ones"
+  },
+  {
+    "type": "learned",
+    "finding": "The vast majority of predictions (84,099 out of 90,424) are made with confidence=0"
+  },
+  {
+    "type": "implications",
+    "finding": "The confidence score appears to be a weak predictor of actual success"
+  },
+  {
+    "type": "implications",
+    "finding": "The model might be overly conservative, assigning low confidence even when it has complete data"
+  },
+  {
+    "type": "implications",
+    "finding": "There may be a systematic bias in how confidence is assigned across different bubbles"
+  },
+  {
+    "type": "implications",
+    "finding": "The current confidence scoring system may need recalibration given the inverse relationship with data completeness"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze success rates within each bubble separately to identify if confidence scores work better for specific segments"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate why high-confidence predictions have lower data coverage"
+  },
+  {
+    "type": "next",
+    "finding": "Examine the specific combinations of features present in high-confidence, successful predictions"
+  },
+  {
+    "type": "next",
+    "finding": "Consider creating a new confidence metric that better correlates with success rates"
+  },
+  {
+    "type": "learned",
+    "finding": "Surprisingly, the highest success rates are quite low (max 5.06% for Date Nights City Lights)"
+  },
+  {
+    "type": "learned",
+    "finding": "All top 5 segments show \"Neither\" for data coverage pattern, contradicting what we might expect"
+  },
+  {
+    "type": "learned",
+    "finding": "Confidence bins are clustered (mostly 2.0), suggesting limited differentiation"
+  },
+  {
+    "type": "learned",
+    "finding": "Contact rates are consistently narrow (1.25-1.35 contacts per individual)"
+  },
+  {
+    "type": "learned",
+    "finding": "Age patterns vary widely in top performers (25-34 to 75+)"
+  },
+  {
+    "type": "implications",
+    "finding": "The confidence scoring system may be miscalibrated, as higher confidence bins aren't showing better success rates"
+  },
+  {
+    "type": "implications",
+    "finding": "The lack of credit/political data isn't necessarily a handicap for performance"
+  },
+  {
+    "type": "implications",
+    "finding": "The narrow range of contacts per individual suggests a standardized contact strategy"
+  },
+  {
+    "type": "implications",
+    "finding": "Success rates under 5% indicate a generally challenging campaign environment"
+  },
+  {
+    "type": "implications",
+    "finding": "Income segments J-O (higher income) dominate the top performers"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate why Date Nights City Lights with confidence_bin=1 outperforms others"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze lower confidence bins to understand the full confidence-success relationship"
+  },
+  {
+    "type": "next",
+    "finding": "Examine whether combining income and age patterns could yield better targeting"
+  },
+  {
+    "type": "next",
+    "finding": "Look for cases where having more data (Credit/Political) actually helps performance"
+  },
+  {
+    "type": "next",
+    "finding": "Consider whether the 50-attempt threshold is masking any important patterns"
+  },
+  {
+    "type": "learned",
+    "finding": "Success rates are generally low (max 8.22%) even in best-performing segments"
+  },
+  {
+    "type": "learned",
+    "finding": "Top performers are surprisingly diverse: \"Working for the Weekend\" (45-54, M), \"Penny Pinching Couples\" (35-44, F), and \"Urban Elites\" (65-74, S)"
+  },
+  {
+    "type": "learned",
+    "finding": "Data coverage varies significantly (credit coverage 43-93%, political coverage 17-81%)"
+  },
+  {
+    "type": "learned",
+    "finding": "Kids presence is notably high in some segments (92% in Social Climbers 25-34)"
+  },
+  {
+    "type": "learned",
+    "finding": "Most segments have unique individuals close to attempt count, suggesting limited repeat attempts"
+  },
+  {
+    "type": "implications",
+    "finding": "No single demographic combination dominates success; top performers span different age groups and income levels"
+  },
+  {
+    "type": "implications",
+    "finding": "The \"Working for the Weekend\" segment's higher success rate (8.22%) with lower data coverage suggests quality over quantity in data points"
+  },
+  {
+    "type": "implications",
+    "finding": "High unique individual counts relative to attempts indicates most people try only once, pointing to potential engagement issues"
+  },
+  {
+    "type": "implications",
+    "finding": "Data coverage isn't strongly correlated with success (top performer has below-average coverage)"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze temporal patterns within these top segments to understand if success rates are stable or varying over time"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate why \"Working for the Weekend\" succeeds with lower data coverage"
+  },
+  {
+    "type": "next",
+    "finding": "Look into repeat attempts in successful segments to identify what drives multiple tries"
+  },
+  {
+    "type": "next",
+    "finding": "Examine the relationship between kids presence and success rates, particularly in younger segments"
+  },
+  {
+    "type": "learned",
+    "finding": "Urban Elites has the highest average success rate (1.49%) but moderate volatility (0.65)"
+  },
+  {
+    "type": "learned",
+    "finding": "Social Climbers shows high volatility (1.78) with mediocre success (1.01%)"
+  },
+  {
+    "type": "learned",
+    "finding": "Kids presence strongly correlates with success in Urban Elites (0.98) but negatively for others"
+  },
+  {
+    "type": "learned",
+    "finding": "Data quality correlation is split: positive for Urban Elites (0.70), negative for others"
+  },
+  {
+    "type": "learned",
+    "finding": "All segments span the same time periods (6 periods from 1 to 5)"
+  },
+  {
+    "type": "implications",
+    "finding": "Urban Elites is our most reliable performer, combining high success with moderate volatility"
+  },
+  {
+    "type": "implications",
+    "finding": "Social Climbers' high volatility suggests inconsistent performance despite decent average success"
+  },
+  {
+    "type": "implications",
+    "finding": "The strong kids correlation for Urban Elites indicates a clear demographic success factor"
+  },
+  {
+    "type": "implications",
+    "finding": "Data enrichment benefits vary significantly by segment, suggesting targeted data collection strategies"
+  },
+  {
+    "type": "implications",
+    "finding": "All segments have consistent temporal coverage, making comparisons reliable"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate what drives Urban Elites' success with families"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze what causes Social Climbers' high volatility"
+  },
+  {
+    "type": "next",
+    "finding": "Examine specific time periods where performance diverged significantly"
+  },
+  {
+    "type": "next",
+    "finding": "Study why data quality correlations vary so dramatically between segments"
+  },
+  {
+    "type": "next",
+    "finding": "Look into whether combining successful elements from Urban Elites could improve other segments"
+  },
+  {
+    "type": "learned",
+    "finding": "Seniors dominate the top success rates (4.55% and 3.15% for top segments)"
+  },
+  {
+    "type": "learned",
+    "finding": "Data coverage is highly variable: some segments have nearly 100% coverage for homeowner/networth data, while others have 0% coverage"
+  },
+  {
+    "type": "learned",
+    "finding": "The highest success rates are associated with 'S' income band"
+  },
+  {
+    "type": "learned",
+    "finding": "The presence of kids shows mixed impact: it's positive in some senior segments (appearing in top rows) but not consistently"
+  },
+  {
+    "type": "learned",
+    "finding": "Confidence scores don't seem predictive - the top performing segments have very low confidence scores (0.000-0.016)"
+  },
+  {
+    "type": "implications",
+    "finding": "The data quality divide is stark: segments either have very complete data (80%+ coverage) or very sparse data (<15% coverage)"
+  },
+  {
+    "type": "implications",
+    "finding": "The success rates are generally low (max 4.55%), suggesting this is a challenging campaign even in the best segments"
+  },
+  {
+    "type": "implications",
+    "finding": "The high unique individual counts relative to attempts (e.g., 137 individuals in 154 attempts) suggests minimal repeat targeting"
+  },
+  {
+    "type": "implications",
+    "finding": "Data completeness appears correlated with success: top performers have high coverage across multiple data points"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate why confidence scores are inversely related to actual success rates"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze the 'S' income band more deeply, as it appears in top-performing segments"
+  },
+  {
+    "type": "next",
+    "finding": "Explore why some segments have such comprehensive data coverage while others have almost none"
+  },
+  {
+    "type": "next",
+    "finding": "Look for patterns in the segments with zero successes to understand failure modes"
+  },
+  {
+    "type": "next",
+    "finding": "Consider a focused analysis on seniors with complete financial data, as this appears to be our best-performing micro-segment"
+  }
+]

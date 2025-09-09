@@ -1,0 +1,19 @@
+## Analysis of Homeowner Status Impact
+
+### 1. What we learned:
+- **Code '8' is the clear winner**: Despite representing only 2.08% of records (1,884), it achieves the highest success rate at 1.49% - more than double any other category
+- **'H' dominates volume but underperforms**: 82.73% of all records (74,804) but only 0.71% success rate, suggesting this is likely the baseline/most common homeowner status
+- **'R' and '9' are middle performers**: 'R' has 1.01% success rate across 7.30% of records, while '9' has 0.75% success rate but very small volume (0.74%)
+- **Confidence levels vary dramatically**: Code '8' has highest avg confidence (0.45), while 'H' has lowest (0.05), suggesting model uncertainty correlates with performance
+
+### 2. Implications:
+- **Clear segmentation opportunity**: Code '8' customers are premium targets - 3x higher confidence and 2x higher success rates
+- **Volume vs. quality trade-off**: 'H' provides scale but poor conversion; '8' provides quality but limited scale
+- **Data quality concerns**: The cryptic codes and extreme confidence variations suggest potential data encoding issues or missing category definitions
+- **Targeting efficiency**: Current campaigns may be over-indexing on 'H' (82% of records) when '8' delivers superior results
+
+### 3. Next directions:
+- **Decode the mystery codes**: Investigate what '8', 'H', 'R', '9' actually represent in business terms
+- **Analyze confidence score patterns**: Understand why confidence varies so dramatically across homeowner categories
+- **Cross-reference with demographics**: See how homeowner codes interact with age, income, or geographic variables
+- **Cost-benefit analysis**: Calculate if targeting more '8' customers (despite smaller volume) yields better ROI than broad 'H' targeting

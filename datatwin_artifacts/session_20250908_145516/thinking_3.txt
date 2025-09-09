@@ -1,0 +1,29 @@
+## Analysis of Single-Table Distribution and Data Provider Patterns
+
+### 1. What we learned:
+
+**Single-table isolation is extreme**: The 358.9M isolated AA_IDs break down as:
+- LAL_AA_FIELDS_EXTRACT: 358.9M (dominates completely)
+- LAL_HISTORY_DETAIL: 124.4M 
+- AA_SIGNAL_MATCH_HISTORY: 50.2M
+
+**Data provider specialization is stark**:
+- Provider 2 dominates AA_SIGNAL_MATCH_HISTORY (119.8M unique IDs, 1.65B records)
+- Provider 1 exclusively serves CLOSED_LOOP_DATA and REMAIL_LOG
+- Providers 4-5 have much smaller footprints (40-42M IDs each)
+
+### 2. Implications:
+
+**LAL_AA_FIELDS_EXTRACT is a data silo**: With 358.9M isolated users, this table operates almost independently from the cross-table ecosystem, suggesting it serves a distinct business function (likely raw data extraction/staging).
+
+**Provider-table coupling**: The data architecture shows strong provider specialization rather than redundancy - each provider appears to serve specific use cases rather than providing backup/validation data.
+
+**Scale imbalance**: Provider 2's 1.65B records in signal matching vs Provider 1's 3.4M records in closed-loop suggests vastly different data collection capabilities or business focus.
+
+### 3. Next directions:
+
+1. **Investigate LAL_AA_FIELDS_EXTRACT purpose**: Why does this table have such massive isolation? Is it a staging area or separate product line?
+
+2. **Analyze provider business models**: The 500x record volume difference between providers suggests different data types or collection methods - need to understand what each provider specializes in.
+
+3. **Examine temporal patterns**: Check if the isolation is due to different time periods or if these represent parallel data streams.

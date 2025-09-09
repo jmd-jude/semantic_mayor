@@ -1,0 +1,61 @@
+{
+  "sql": "WITH contact_groups AS (
+    SELECT 
+      INDIVIDUALID,
+      COUNT(*) as contact_count,
+      SUM(CASE WHEN TARGET = 1 THEN 1 ELSE 0 END) as success_count
+    FROM DM_CAMPAIGN
+    GROUP BY INDIVIDUALID
+  ),
+  demographic_coverage AS (
+    SELECT
+      contact_count,
+      success_count > 0 as is_success,
+      COUNT(*) as group_size,
+      AVG(CASE WHEN d.GENDER IS NOT NULL THEN 1 ELSE 0 END) as gender_coverage,
+      AVG(CASE WHEN d.AGE IS NOT NULL THEN 1 ELSE 0 END) as age_coverage,
+      AVG(CASE WHEN d.HH_INCOME IS NOT NULL THEN 1 ELSE 0 END) as income_coverage,
+      AVG(CASE WHEN d.CREDIT_RATING IS NOT NULL THEN 1 ELSE 0 END) as credit_coverage,
+      AVG(CASE WHEN d.PART_AFFILIATION IS NOT NULL THEN 1 ELSE 0 END) as political_coverage,
+      AVG(CONFIDENCE_LEVEL) as avg_confidence,
+      AVG(CASE WHEN d.PRES_KIDS IS NOT NULL THEN 1 ELSE 0 END) as kids_coverage
+    FROM contact_groups cg
+    JOIN DM_CAMPAIGN d ON cg.INDIVIDUALID = d.INDIVIDUALID
+    GROUP BY contact_count, success_count > 0
+  )
+  SELECT 
+    contact_count,
+    is_success,
+    group_size,
+    ROUND(100 * gender_coverage, 2) as pct_gender_coverage,
+    ROUND(100 * age_coverage, 2) as pct_age_coverage,
+    ROUND(100 * income_coverage, 2) as pct_income_coverage,
+    ROUND(100 * credit_coverage, 2) as pct_credit_coverage,
+    ROUND(100 * political_coverage, 2) as pct_political_coverage,
+    ROUND(100 * kids_coverage, 2) as pct_kids_coverage,
+    ROUND(avg_confidence, 3) as avg_confidence
+  FROM demographic_coverage
+  ORDER BY contact_count, is_success",
+
+  "reasoning": "This query addresses several key questions that emerged from previous findings:
+
+1. Data Quality Patterns:
+   - We've seen varying levels of missing data across fields, but haven't understood if this missingness is random or systematic
+   - This query segments by both contact frequency and success status to reveal if data completeness correlates with campaign outcomes
+   - We can identify if successful cases have better/worse data quality than failures
+
+2. Success Factors:
+   - Previous queries showed higher success rates with multiple contacts
+   - This analysis will reveal if data completeness might be a contributing factor
+   - We can see if confidence levels truly correlate with success when controlling for contact frequency
+
+3. Operational Insights:
+   - By comparing coverage rates across different contact frequencies, we can understand if follow-up contacts are targeted at individuals with better data quality
+   - This could reveal whether the campaign team is using data completeness as a targeting criterion
+
+4. Data Collection Practices:
+   - The varying coverage rates between demographic fields might indicate different data collection processes
+   - This analysis will show if certain types of information are consistently collected together or if there are systematic gaps
+
+This query builds on previous findings about contact patterns and success rates, but adds the crucial dimension of data quality patterns, which hasn't been thoroughly explored yet."
+}

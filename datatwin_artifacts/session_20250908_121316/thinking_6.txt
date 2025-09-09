@@ -1,0 +1,17 @@
+## Analysis of Wealth-Based Segmentation Results
+
+### 1. What we learned:
+- **Extreme segmentation with tiny volumes**: The highest-performing segments have minuscule sample sizes (1-10 records each), making success rates unreliable. The 100% success rate comes from just 1 record.
+- **Coded wealth indicators**: Income uses letters (E, G, Q, R) and net worth uses letters (A, F, G, H), confirming these are categorical codes needing interpretation like homeowner status.
+- **Low overall confidence**: Average confidence is near 0.00 across all segments, dramatically different from homeowner code '8' which had much higher confidence scores.
+- **Sparse successful targets**: Even top segments only achieve 1-6 successful targets total, with most having just 1 success.
+
+### 2. Implications:
+- **Data sparsity issue**: The combination of AGE + HH_INCOME + NET_WORTH creates over-segmentation with statistically insignificant sample sizes (mean 17.6 records per segment).
+- **Wealth codes need decoding**: Like homeowner status, these letter codes likely represent ordinal wealth levels that require interpretation.
+- **Volume-quality trade-off**: Unlike homeowner code '8' which had substantial volume (11,419 records), these wealth-based micro-segments offer no scalable targeting opportunity.
+
+### 3. Next directions:
+1. **Decode wealth hierarchies**: Query to understand what income letters (E,G,Q,R) and net worth letters (A,F,G,H) represent in terms of actual wealth levels
+2. **Individual dimension analysis**: Analyze AGE, HH_INCOME, and NET_WORTH separately rather than combined to find meaningful patterns with sufficient volume
+3. **Cross-reference with homeowner status**: Examine if homeowner code '8' correlates with specific income/net worth levels to understand the wealth profile of our best-performing segment

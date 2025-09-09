@@ -1,0 +1,19 @@
+## Analysis of Age-Based Campaign Performance
+
+### 1. What we learned:
+- **Age 35-44 dominates performance**: Highest success rate (1.08%) and absolute targets (162), representing 16.6% of records
+- **Homeowner code '8' concentrates in younger segments**: 25-34 age group has 9.55% homeowner '8' penetration vs. 0.21-0.83% in older groups
+- **Confidence scores decline with age**: From 0.19 (25-34) to 0.04 (65-74), suggesting model uncertainty increases with older demographics
+- **Volume distribution is fairly even**: Most age groups have 14K-18K records, providing statistical significance
+
+### 2. Implications:
+- **Prime target identified**: 35-44 age group combines high volume (15K records) with best conversion, making it the optimal campaign focus
+- **Wealth-age correlation exists**: Younger customers (25-34) have 40x higher concentration of premium homeowner status than seniors, but lower conversion rates
+- **Model bias toward younger demographics**: Higher confidence scores for younger ages suggest training data skew or feature engineering issues
+- **Lifecycle targeting opportunity**: Different value propositions needed across age segments
+
+### 3. Next directions:
+- **Deep-dive 35-44 segment**: Analyze other demographic/behavioral attributes within this high-performing age group
+- **Investigate 25-34 homeowner '8' overlap**: Why do wealthy young customers have lower conversion despite premium status?
+- **Confidence score investigation**: Examine what drives the dramatic confidence decline in older age groups
+- **Cross-tabulate AGE × HOMEOWNER**: Full matrix analysis to identify optimal age-wealth combinations

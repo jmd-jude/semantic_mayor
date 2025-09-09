@@ -1,0 +1,6 @@
+```json
+{
+  "sql": "SELECT COUNT(*) as total_records, COUNT(DISTINCT INDIVIDUALID) as unique_individuals, COUNT(INDIVIDUALID) as non_null_ids, (COUNT(*) - COUNT(INDIVIDUALID)) as null_ids FROM DM_CAMPAIGN",
+  "reasoning": "As this is the first query, I need to understand the basic structure and size of the dataset. This query will tell me: 1) How many total records exist in the table, 2) Whether INDIVIDUALID is truly unique (indicating one record per person vs. multiple records per person), 3) How many records have null INDIVIDUALID values, which could indicate data quality issues. This foundational information will help me understand if this is a clean customer dataset or if there are duplicates/missing identifiers that I need to account for in subsequent analysis."
+}
+```

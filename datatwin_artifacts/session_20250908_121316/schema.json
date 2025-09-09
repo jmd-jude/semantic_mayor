@@ -1,0 +1,166 @@
+{
+  "tables": {
+    "DM_CAMPAIGN": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "INDIVIDUALID",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOME_VALUE",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HH_INCOME",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "NET_WORTH",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PRES_KIDS",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AGE",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOMEOWNER",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CREDIT_RATING",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PART_AFFILIATION",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CONFIDENCE_LEVEL",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "BUBBLES",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CHILDRENS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FASHION_ACCESSORIES_AND_BEAUTY_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FEMALE_AND_MALE_APPAREL_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HIGH_TICKET_FEMALE_APPAREL_ACC_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HIGH_TICKET_HOME_DECOR_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOME_DECOR_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "INTIMATE_APPAREL_AND_UNDERGARMENTS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "KITCHEN_AND_BATH_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MALE_APPAREL_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MODERN_CONTEMPORARY_DECOR_AND_GIFTS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "OTHER_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PURCHASE_DATE_RANGE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TARGET",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TEST_COLUMN",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    }
+  },
+  "relationships": []
+}

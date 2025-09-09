@@ -1,0 +1,74 @@
+{
+  "sql": "WITH urban_elite_success AS (
+    SELECT 
+        INDIVIDUALID,
+        AGE,
+        HH_INCOME,
+        PRES_KIDS,
+        TARGET,
+        CONFIDENCE_LEVEL,
+        CREDIT_RATING IS NOT NULL as has_credit,
+        PART_AFFILIATION IS NOT NULL as has_political,
+        HOME_VALUE IS NOT NULL as has_home_value,
+        HOMEOWNER IS NOT NULL as has_homeowner,
+        NET_WORTH IS NOT NULL as has_networth
+    FROM DM_CAMPAIGN
+    WHERE BUBBLES = 'Urban Elites'
+),
+data_patterns AS (
+    SELECT
+        CASE 
+            WHEN AGE LIKE '%65%' OR AGE LIKE '%75%' THEN 'Senior'
+            WHEN AGE LIKE '%55%' THEN 'Pre-Senior'
+            ELSE 'Other'
+        END as age_group,
+        PRES_KIDS,
+        HH_INCOME,
+        COUNT(*) as attempts,
+        SUM(TARGET) as successes,
+        AVG(CONFIDENCE_LEVEL) as avg_confidence,
+        AVG(has_credit::INT) as credit_coverage,
+        AVG(has_political::INT) as political_coverage,
+        AVG(has_home_value::INT) as home_value_coverage,
+        AVG(has_homeowner::INT) as homeowner_coverage,
+        AVG(has_networth::INT) as networth_coverage,
+        COUNT(DISTINCT INDIVIDUALID) as unique_individuals
+    FROM urban_elite_success
+    GROUP BY age_group, PRES_KIDS, HH_INCOME
+    HAVING attempts >= 20
+)
+SELECT 
+    age_group,
+    PRES_KIDS,
+    HH_INCOME,
+    attempts,
+    successes,
+    ROUND((successes::FLOAT / attempts) * 100, 2) as success_rate,
+    ROUND(avg_confidence, 3) as avg_confidence,
+    ROUND(credit_coverage * 100, 1) as pct_credit_coverage,
+    ROUND(political_coverage * 100, 1) as pct_political_coverage,
+    ROUND(home_value_coverage * 100, 1) as pct_home_value_coverage,
+    ROUND(homeowner_coverage * 100, 1) as pct_homeowner_coverage,
+    ROUND(networth_coverage * 100, 1) as pct_networth_coverage,
+    unique_individuals
+FROM data_patterns
+ORDER BY success_rate DESC, attempts DESC",
+  "reasoning": "Based on previous findings, Urban Elites emerged as the most reliable performer with interesting patterns around family presence and data quality. This query aims to deeply analyze this segment to understand:
+
+1. The specific age-income-family combinations that drive success, with special attention to seniors (who showed promise in earlier analysis)
+
+2. The relationship between different types of financial data coverage (credit, home value, net worth) and success rates, as previous queries showed mixed signals about data completeness
+
+3. Whether the strong kids correlation holds across different age and income bands, helping us understand if it's a universal factor or specific to certain sub-segments
+
+4. The granular patterns of data coverage across different demographic combinations, which could help explain why some data quality correlations were positive for this segment
+
+5. Whether the confidence scoring system works better within this specific segment than it does across the broader population
+
+This query will help us:
+- Identify the most successful micro-segments within Urban Elites
+- Understand which types of supplemental data are most important for success
+- Validate whether the kids-success correlation holds at a more granular level
+- Guide data collection priorities for different customer types
+- Potentially provide insights that could be applied to improve other segments"
+}

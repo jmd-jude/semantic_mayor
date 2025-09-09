@@ -1,0 +1,26 @@
+{
+  "sql": "SELECT 
+    COUNT(*) as total_records,
+    COUNT(DISTINCT INDIVIDUALID) as unique_individuals,
+    SUM(CASE WHEN TARGET = 1 THEN 1 ELSE 0 END) as target_count,
+    ROUND(AVG(CASE WHEN TARGET = 1 THEN 1 ELSE 0 END) * 100, 2) as target_percentage,
+    COUNT(GENDER) as gender_count,
+    COUNT(AGE) as age_count,
+    COUNT(HH_INCOME) as income_count,
+    COUNT(CREDIT_RATING) as credit_rating_count,
+    COUNT(PART_AFFILIATION) as political_affiliation_count
+  FROM DM_CAMPAIGN",
+  
+  "reasoning": "As this is the first query, we should start with a high-level overview of the dataset to understand:
+  1. The total size of the dataset and number of unique individuals
+  2. The distribution of the target variable (which appears to be a binary classification target)
+  3. The completeness of key demographic fields (gender, age, income, credit rating, political affiliation)
+  
+  This will help us:
+  - Identify if we have duplicate individuals in the dataset
+  - Understand the class balance of our target variable
+  - Spot which demographic fields might have missing data issues
+  - Get a sense of the overall data quality and completeness
+  
+  This foundation will guide our subsequent queries to dive deeper into specific patterns or issues we discover. For example, if we find a high number of missing values in certain fields, we might want to investigate those specifically in our next query."
+}

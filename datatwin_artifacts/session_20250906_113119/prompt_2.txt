@@ -1,0 +1,200 @@
+You are an expert data analyst exploring a database to understand its structure, content, and blind spots.
+You will receive the database schema and the history of your exploration.
+Your task is to generate the next SQL query to explore the database, along with your reasoning.
+
+You have run 1 queries so far, and can run up to 10 total queries.
+
+DATABASE SCHEMA:
+```json
+{
+  "tables": {
+    "DM_CAMPAIGN": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "INDIVIDUALID",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOME_VALUE",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HH_INCOME",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "NET_WORTH",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PRES_KIDS",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AGE",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOMEOWNER",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CREDIT_RATING",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PART_AFFILIATION",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CONFIDENCE_LEVEL",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "BUBBLES",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CHILDRENS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FASHION_ACCESSORIES_AND_BEAUTY_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FEMALE_AND_MALE_APPAREL_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HIGH_TICKET_FEMALE_APPAREL_ACC_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HIGH_TICKET_HOME_DECOR_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOME_DECOR_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "INTIMATE_APPAREL_AND_UNDERGARMENTS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "KITCHEN_AND_BATH_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MALE_APPAREL_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MODERN_CONTEMPORARY_DECOR_AND_GIFTS_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "OTHER_RECENCY_OF_PURCHASE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PURCHASE_DATE_RANGE",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TARGET",
+          "type": "NUMBER",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TEST_COLUMN",
+          "type": "TEXT",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    }
+  },
+  "relationships": []
+}
+```
+
+EXPLORATION HISTORY:
+This is the first query.
+
+=== Current Findings ===
+[]
+
+Based on the schema and previous exploration, generate:
+1. The next SQL query to run (must be valid Snowflake SQL)
+2. Your reasoning for choosing this query
+
+Format your response as a JSON object with these keys:
+- sql: The SQL query to execute
+- reasoning: Your detailed reasoning for this query, explaining what you hope to learn
+
+IMPORTANT GUIDELINES:
+- Focus on understanding data coverage patterns and blind spots
+- Look for interesting relationships between entities
+- Seek to understand where data is rich vs. sparse
+- Make each query build on what you've learned from previous ones
+- Avoid repetitive queries that don't add new insights
+- Ensure queries are valid Snowflake SQL
+- Use LIMIT clauses to keep result sets manageable
+
+JSON RESPONSE:

@@ -1,0 +1,99 @@
+You have completed an autonomous exploration of a database. Generate a summary report of what you've learned.
+
+DATABASE SCHEMA SUMMARY:
+- Tables: 1
+- Relationships: 0
+- Table names: DM_CAMPAIGN
+
+KEY FINDINGS:
+[
+  {
+    "type": "learned",
+    "finding": "Dataset has 90,424 records but only 71,734 unique individuals, indicating multiple records per person"
+  },
+  {
+    "type": "learned",
+    "finding": "Very low target rate (0.78%, 709 positive cases)"
+  },
+  {
+    "type": "learned",
+    "finding": "Missing data varies by field:"
+  },
+  {
+    "type": "learned",
+    "finding": "Gender: 462 missing (99.5% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Age: 2,359 missing (97.4% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Income: 5,159 missing (94.3% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Credit Rating: 27,644 missing (69.4% complete)"
+  },
+  {
+    "type": "learned",
+    "finding": "Political Affiliation: 37,844 missing (58.1% complete)"
+  },
+  {
+    "type": "implications",
+    "finding": "Significant data quality issues in credit rating and political affiliation fields"
+  },
+  {
+    "type": "implications",
+    "finding": "Severe class imbalance in target variable will require special handling"
+  },
+  {
+    "type": "implications",
+    "finding": "Average of 1.26 records per individual (90,424/71,734) suggests repeated interactions"
+  },
+  {
+    "type": "implications",
+    "finding": "Basic demographic data (gender, age, income) is relatively complete"
+  },
+  {
+    "type": "learned",
+    "finding": "Strong skew in contact frequency: 57,929 individuals (majority) have single contact, dropping sharply to 9,412 with two contacts"
+  },
+  {
+    "type": "learned",
+    "finding": "Success rate pattern is notable: increases from 0.82% (single contact) to 22.73% (five contacts)"
+  },
+  {
+    "type": "learned",
+    "finding": "Average date range is mostly small (mostly <0.33), suggesting clustered contacts"
+  },
+  {
+    "type": "learned",
+    "finding": "Consistently seeing avg_unique_bubbles \u2248 1, indicating minimal bubble diversity per individual"
+  },
+  {
+    "type": "implications",
+    "finding": "Campaign appears to be primarily single-touch, with selective multiple contacts"
+  },
+  {
+    "type": "implications",
+    "finding": "Multiple contacts correlate strongly with higher success (22.73% vs 0.82%), suggesting potential benefits of follow-up"
+  },
+  {
+    "type": "implications",
+    "finding": "Short date ranges indicate rapid follow-up strategy rather than long-term nurturing"
+  },
+  {
+    "type": "implications",
+    "finding": "Single-bubble targeting suggests specialized/focused campaign approach rather than cross-category marketing"
+  }
+]
+
+Generate a markdown report with these sections:
+1. Data Structure Overview - Key entities and relationships discovered
+2. Data Coverage Analysis - Areas of strong vs. sparse data
+3. Interesting Patterns - Notable patterns and anomalies
+4. Blind Spots - Areas that might need more investigation or data collection
+5. Recommendations - Suggestions for data quality improvements
+
+Make your report concise but specific, referencing actual findings from your exploration.

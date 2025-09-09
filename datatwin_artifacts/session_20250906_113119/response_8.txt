@@ -1,0 +1,68 @@
+{
+  "sql": "WITH bubble_confidence_patterns AS (
+    SELECT 
+        BUBBLES,
+        ROUND(CONFIDENCE_LEVEL, 2) as confidence_bin,
+        COUNT(*) as attempts,
+        SUM(CASE WHEN TARGET = 1 THEN 1 ELSE 0 END) as successes,
+        COUNT(DISTINCT INDIVIDUALID) as unique_individuals,
+        AVG(CASE 
+            WHEN CREDIT_RATING IS NOT NULL AND PART_AFFILIATION IS NOT NULL THEN 1
+            WHEN CREDIT_RATING IS NOT NULL AND PART_AFFILIATION IS NULL THEN 2
+            WHEN CREDIT_RATING IS NULL AND PART_AFFILIATION IS NOT NULL THEN 3
+            ELSE 4 
+        END) as data_pattern_type,
+        MODE(HH_INCOME) as typical_income,
+        MODE(AGE) as typical_age,
+        AVG(CASE WHEN PRES_KIDS = TRUE THEN 1 ELSE 0 END) as kids_ratio
+    FROM DM_CAMPAIGN
+    WHERE CONFIDENCE_LEVEL IS NOT NULL
+    GROUP BY BUBBLES, ROUND(CONFIDENCE_LEVEL, 2)
+    HAVING attempts >= 50
+),
+success_metrics AS (
+    SELECT 
+        *,
+        ROUND((successes::FLOAT / attempts) * 100, 2) as success_rate,
+        ROUND((attempts::FLOAT / unique_individuals), 2) as contacts_per_individual
+    FROM bubble_confidence_patterns
+)
+SELECT 
+    BUBBLES,
+    confidence_bin,
+    attempts,
+    successes,
+    success_rate,
+    contacts_per_individual,
+    CASE data_pattern_type
+        WHEN 1 THEN 'Both Credit & Political'
+        WHEN 2 THEN 'Credit Only'
+        WHEN 3 THEN 'Political Only'
+        ELSE 'Neither'
+    END as data_coverage_pattern,
+    typical_income,
+    typical_age,
+    ROUND(kids_ratio * 100, 1) as pct_with_kids
+FROM success_metrics
+ORDER BY success_rate DESC, attempts DESC
+LIMIT 20",
+  "reasoning": "This query addresses several key questions that emerged from our previous findings:
+
+1. The paradoxical relationship between confidence scores and data coverage:
+   - By breaking down data coverage into patterns (Both/Credit Only/Political Only/Neither), we can better understand if certain combinations of data are driving confidence scores
+   - This helps investigate why high-confidence predictions have lower data coverage
+
+2. Bubble-specific confidence patterns:
+   - Previous queries showed varying success rates across bubbles, but we haven't fully understood how confidence scores work within each bubble
+   - By examining confidence bins within bubbles, we can identify if the confidence score is more predictive in certain segments
+
+3. Demographic patterns in high-performing segments:
+   - Including typical_income, typical_age, and kids_ratio helps us understand the demographic makeup of successful segments
+   - This builds on our finding that certain bubbles (like Social Climbers) succeed despite low data coverage
+
+4. Contact intensity relationship:
+   - contacts_per_individual metric helps us understand if higher success rates are due to more attempts or better targeting
+   - This connects to our earlier finding about multiple contacts correlating with success
+
+The query uses a minimum threshold of 50 attempts to ensure statistical significance while still capturing enough detail to spot patterns. The results should help us understand whether we need different confidence scoring approaches for different customer segments."
+}

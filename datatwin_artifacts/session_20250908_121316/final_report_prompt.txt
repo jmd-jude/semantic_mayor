@@ -1,0 +1,99 @@
+You have completed an autonomous exploration of a database. Generate a summary report of what you've learned.
+
+DATABASE SCHEMA SUMMARY:
+- Tables: 1
+- Relationships: 0
+- Table names: DM_CAMPAIGN
+
+KEY FINDINGS:
+[
+  {
+    "type": "learned",
+    "finding": "**Dataset size**: 90,424 total records across 71,734 unique individuals"
+  },
+  {
+    "type": "learned",
+    "finding": "**Data completeness**: No null INDIVIDUALID values (excellent data quality)"
+  },
+  {
+    "type": "learned",
+    "finding": "**Record distribution**: Multiple records per individual (90,424 \u00f7 71,734 = ~1.26 records per person on average)"
+  },
+  {
+    "type": "implications",
+    "finding": "This is a **campaign interaction dataset**, not a simple customer master file - individuals appear multiple times"
+  },
+  {
+    "type": "implications",
+    "finding": "The 18,690 \"extra\" records (90,424 - 71,734) indicate either:"
+  },
+  {
+    "type": "implications",
+    "finding": "Multiple campaigns per individual, or"
+  },
+  {
+    "type": "implications",
+    "finding": "Multiple touchpoints/responses within campaigns, or"
+  },
+  {
+    "type": "implications",
+    "finding": "Time-series data tracking campaign interactions over time"
+  },
+  {
+    "type": "implications",
+    "finding": "**Clean data quality** with complete identifier coverage enables reliable individual-level analysis"
+  },
+  {
+    "type": "next",
+    "finding": "**Explore campaign multiplicity**: Query to understand how many campaigns/records per individual and the distribution"
+  },
+  {
+    "type": "next",
+    "finding": "**Identify time dimension**: Check for date fields to understand if this tracks campaigns over time"
+  },
+  {
+    "type": "next",
+    "finding": "**Campaign categorization**: Examine what types of campaigns exist and their frequency"
+  },
+  {
+    "type": "next",
+    "finding": "**Response/outcome analysis**: Look for success metrics or response indicators in the dataset"
+  },
+  {
+    "type": "learned",
+    "finding": "**Highly skewed distribution**: 80.76% of individuals (57,929) appear exactly once in campaigns, while only 19.24% have multiple campaign records"
+  },
+  {
+    "type": "learned",
+    "finding": "**Rapid drop-off pattern**: Multiple appearances decrease dramatically - 13.12% have 2 records, 5.67% have 3 records, then drops to <1% for 4+ records"
+  },
+  {
+    "type": "learned",
+    "finding": "**Long tail exists**: Distribution extends to 12 records per individual, indicating some highly engaged participants"
+  },
+  {
+    "type": "learned",
+    "finding": "**Data concentration**: The 57,929 single-record individuals account for 64% of all campaign records (57,929/90,424)"
+  },
+  {
+    "type": "implications",
+    "finding": "**Campaign strategy**: Most individuals are one-time campaign participants, suggesting either acquisition-focused campaigns or low repeat engagement"
+  },
+  {
+    "type": "implications",
+    "finding": "**Customer segmentation opportunity**: The 13,805 multi-campaign individuals (19.24%) represent a distinct, potentially high-value segment worth analyzing separately"
+  },
+  {
+    "type": "implications",
+    "finding": "**Data structure**: Clean distribution with no extreme outliers (max 12 records) indicates good data quality"
+  }
+]
+
+Generate a markdown report with these sections:
+1. Data Structure Overview - Key entities and relationships discovered
+2. Data Coverage Analysis - Areas of strong vs. sparse data
+3. Interesting Patterns - Notable patterns and anomalies
+4. Blind Spots - Areas that might need more investigation or data collection
+5. Recommendations - Suggestions for data quality improvements
+
+Make your report concise but specific, referencing actual findings from your exploration.

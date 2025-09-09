@@ -1,0 +1,1472 @@
+You are an expert data analyst exploring a database to understand its structure, content, and blind spots.
+You will receive the database schema and the history of your exploration.
+Your task is to generate the next SQL query to explore the database, along with your reasoning.
+
+You have run 2 queries so far, and can run up to 3 total queries.
+
+DATABASE SCHEMA:
+```json
+{
+  "tables": {
+    "AA_SIGNAL_MATCH_HISTORY": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "_AIRBYTE_RAW_ID",
+          "type": "VARCHAR(16777216) COLLATE 'utf8'",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_EXTRACTED_AT",
+          "type": "TIMESTAMP_TZ(9)",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_META",
+          "type": "VARIANT",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_GENERATION_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AA_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TITLE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "UNIQUE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VISITOR_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CREATED_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATA_PROVIDER_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MAX_DATA_COLLECT_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    },
+    "CLOSED_LOOP_DATA": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "_AIRBYTE_RAW_ID",
+          "type": "VARCHAR(16777216) COLLATE 'utf8'",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_EXTRACTED_AT",
+          "type": "TIMESTAMP_TZ(9)",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_META",
+          "type": "VARIANT",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_GENERATION_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "O",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "C6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CR",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DD",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DL",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DM",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DT",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "EF",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "EY",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GH",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GL",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "H6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "L6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ML",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MS",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "OT",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "P6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "S6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SC",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SD",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SO",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SR",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SY",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "T6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "V6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VA",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEG",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SKU",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SENT",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR1",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR2",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR3",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR4",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR5",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR7",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "NOTES",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR11",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR12",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR13",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MAILED",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "USERID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_15",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "KEYCODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEGMENT",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_TO",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ZIPCODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CLIENTID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FILECODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FILEDATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FILENAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TAG_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TEMPLATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TITLE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DONOTSEND",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_JOB_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_PREFIX",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SITE_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "WRF_INDEX",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "BACK_IMAGE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PROGRAM_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PROMO_DESC",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VISITOR_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AUDIENCE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CREATIVE_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ENDPOINT_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_TAG_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FRONT_IMAGE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_15_JSON",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VISUAL_DESC",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ECOMM_SEGMENT",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_FILE_CODES",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_FUTURE_USE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CHILD_FILENAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_PRODUCT_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_RECORD_COUNT",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "LEADGEN_SEGMENT",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PARENT_FILENAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATA_PROVIDER_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_FILE_USE_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PRODUCT_TYPE_NAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FN_DESTINATION_CODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    },
+    "LAL_AA_FIELDS_EXTRACT": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "AA_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOUSEHOLD_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS_ID",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "STATE",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SCF",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS1",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS2",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS3",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    },
+    "LAL_HISTORY_DETAIL": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "_AIRBYTE_RAW_ID",
+          "type": "VARCHAR(16777216) COLLATE 'utf8'",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_EXTRACTED_AT",
+          "type": "TIMESTAMP_TZ(9)",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_META",
+          "type": "VARIANT",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_GENERATION_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RND",
+          "type": "FLOAT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ZIP",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AA_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "NOTES",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_1",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_2",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_3",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_4",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_5",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_7",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_8",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_9",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "JOB_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MAILED",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "USERID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_10",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_11",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_12",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_13",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_14",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_15",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AUTO_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "KEYCODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEGMENT",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_TO",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TITLEID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CLIENTID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RUN_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RUN_TYPE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATESTAMP",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DONOTSEND",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FILE_NAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HEADER_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "IS_ACTIVE",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PROGRAM_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VISITOR_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AUDIENCE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATE_CREATED",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HOUSEHOLD_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RECORDACTION",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATA_PROVIDER_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RECORDACTIONREASON",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    },
+    "REMAIL_LOG": {
+      "type": "BASE TABLE",
+      "columns": [
+        {
+          "name": "_AIRBYTE_RAW_ID",
+          "type": "VARCHAR(16777216) COLLATE 'utf8'",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_EXTRACTED_AT",
+          "type": "TIMESTAMP_TZ(9)",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_META",
+          "type": "VARIANT",
+          "nullable": false,
+          "is_identity": false
+        },
+        {
+          "name": "_AIRBYTE_GENERATION_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ZIP",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CITY",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "NOTES",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SCORE",
+          "type": "FLOAT",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "STATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_1",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_2",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_3",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_4",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_5",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_6",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_7",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_8",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_9",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "GENDER",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "JOB_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "MAILED",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "OUTPUT",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "RANDOM",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TESTID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "USERID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_10",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_11",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_12",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_13",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_14",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VAR_15",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AUTO_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "KEYCODE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEGMENT",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_TO",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SPLITID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "TITLEID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS1",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "ADDRESS2",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "CLIENTID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "LASTNAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATESTAMP",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DONOTSEND",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FILE_NAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "FIRSTNAME",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "LOOKUPKEY",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEGMENTID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "SEND_DATE",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "PROGRAM_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "VISITOR_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "AUDIENCE_ID",
+          "type": "VARCHAR(16777216)",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "HAS_BEEN_SENT",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "is_identity": false
+        },
+        {
+          "name": "DATA_PROVIDER_ID",
+          "type": "NUMBER(38,0)",
+          "nullable": true,
+          "is_identity": false
+        }
+      ]
+    }
+  },
+  "relationships": []
+}
+```
+
+EXPLORATION HISTORY:
+=== Query 1 ===
+SQL: SELECT 
+  'AA_SIGNAL_MATCH_HISTORY' as table_name,
+  COUNT(*) as total_records,
+  COUNT(DISTINCT AA_ID) as unique_aa_ids,
+  COUNT(DISTINCT VISITOR_ID) as unique_visitor_ids,
+  COUNT(DISTINCT TITLE_ID) as unique_title_ids,
+  COUNT(DISTINCT DATA_PROVIDER_ID) as unique_data_providers,
+  MIN(_AIRBYTE_EXTRACTED_AT) as earliest_extract,
+  MAX(_AIRBYTE_EXTRACTED_AT) as latest_extract
+FROM AA_SIGNAL_MATCH_HISTORY
+UNION ALL
+SELECT 
+  'CLOSED_LOOP_DATA' as table_name,
+  COUNT(*) as total_records,
+  COUNT(DISTINCT USERID) as unique_aa_ids,
+  COUNT(DISTINCT VISITOR_ID) as unique_visitor_ids,
+  COUNT(DISTINCT TITLE_ID) as unique_title_ids,
+  COUNT(DISTINCT DATA_PROVIDER_ID) as unique_data_providers,
+  MIN(_AIRBYTE_EXTRACTED_AT) as earliest_extract,
+  MAX(_AIRBYTE_EXTRACTED_AT) as latest_extract
+FROM CLOSED_LOOP_DATA
+UNION ALL
+SELECT 
+  'LAL_HISTORY_DETAIL' as table_name,
+  COUNT(*) as total_records,
+  COUNT(DISTINCT AA_ID) as unique_aa_ids,
+  COUNT(DISTINCT VISITOR_ID) as unique_visitor_ids,
+  COUNT(DISTINCT TITLEID) as unique_title_ids,
+  COUNT(DISTINCT DATA_PROVIDER_ID) as unique_data_providers,
+  MIN(_AIRBYTE_EXTRACTED_AT) as earliest_extract,
+  MAX(_AIRBYTE_EXTRACTED_AT) as latest_extract
+FROM LAL_HISTORY_DETAIL
+UNION ALL
+SELECT 
+  'REMAIL_LOG' as table_name,
+  COUNT(*) as total_records,
+  COUNT(DISTINCT USERID) as unique_aa_ids,
+  COUNT(DISTINCT VISITOR_ID) as unique_visitor_ids,
+  COUNT(DISTINCT TITLEID) as unique_title_ids,
+  COUNT(DISTINCT DATA_PROVIDER_ID) as unique_data_providers,
+  MIN(_AIRBYTE_EXTRACTED_AT) as earliest_extract,
+  MAX(_AIRBYTE_EXTRACTED_AT) as latest_extract
+FROM REMAIL_LOG
+UNION ALL
+SELECT 
+  'LAL_AA_FIELDS_EXTRACT' as table_name,
+  COUNT(*) as total_records,
+  COUNT(DISTINCT AA_ID) as unique_aa_ids,
+  NULL as unique_visitor_ids,
+  NULL as unique_title_ids,
+  NULL as unique_data_providers,
+  NULL as earliest_extract,
+  NULL as latest_extract
+FROM LAL_AA_FIELDS_EXTRACT
+
+Result Summary: Query returned 5 rows with 8 columns. Numeric columns: TOTAL_RECORDS: min=45095502, max=2028809678, avg=776687940.80, UNIQUE_AA_IDS: min=18791092, max=489830625, avg=185526414.00, UNIQUE_VISITOR_IDS: min=18319134.0, max=757407543.0, avg=276192131.50, UNIQUE_TITLE_IDS: min=45.0, max=2373.0, avg=1077.75, UNIQUE_DATA_PROVIDERS: min=3.0, max=4.0, avg=3.50. Categorical columns: TABLE_NAME top values: {'AA_SIGNAL_MATCH_HISTORY': 1, 'CLOSED_LOOP_DATA': 1, 'LAL_HISTORY_DETAIL': 1, 'REMAIL_LOG': 1, 'LAL_AA_FIELDS_EXTRACT': 1}, EARLIEST_EXTRACT top values: {Timestamp('2025-08-24 16:25:43.425000+0000', tz='UTC'): 1, Timestamp('2025-06-18 17:18:30.392000+0000', tz='UTC'): 1, Timestamp('2025-08-23 18:36:58.127000+0000', tz='UTC'): 1, Timestamp('2025-08-21 19:29:40.840000+0000', tz='UTC'): 1}, LATEST_EXTRACT top values: {Timestamp('2025-09-08 07:00:50.116000+0000', tz='UTC'): 2, Timestamp('2025-09-04 07:00:54.626000+0000', tz='UTC'): 1, Timestamp('2025-09-05 19:11:48.721000+0000', tz='UTC'): 1}
+
+Thinking: ## Analysis of Database Overview Results
+
+### 1. What we learned:
+- **AA_SIGNAL_MATCH_HISTORY** is the dominant table with 2.03B records and 757M unique visitor IDs, suggesting it's the primary audience matching dataset
+- **CLOSED_LOOP_DATA** has 679M records but the highest unique AA_ID count (212M), indicating rich user-level attribution data
+- **LAL_AA_FIELDS_EXTRACT** contains 490M records with 1:1 AA_ID mapping (no duplicates), likely a reference/lookup table
+- Data freshness varies significantly: CLOSED_LOOP_DATA spans 2.7 months while others cover ~2 weeks
+- Limited title diversity: most tables cover 45-2,373 titles, but visitor scale is massive (18M-757M unique)
+
+### 2. Implications:
+- This is a large-scale audience measurement platform processing billions of interactions
+- The 3-4 data providers per table suggests a multi-source data integration approach
+- High visitor-to-AA_ID ratios (especially 757M visitors vs 155M AA_IDs in match history) indicate significant cross-device/identity resolution
+- REMAIL_LOG's smaller scale (45M records, 64 titles) suggests it's campaign-specific rather than comprehensive tracking
+
+### 3. Next directions:
+- Investigate the relationship between AA_ID and VISITOR_ID across tables to understand identity resolution effectiveness
+- Examine TITLE_ID overlap patterns to identify core vs. niche content properties
+- Analyze DATA_PROVIDER_ID distribution to understand data source contributions
+- Deep-dive into LAL_AA_FIELDS_EXTRACT structure since it appears to be a comprehensive user profile table
+
+=== Current Findings ===
+[
+  {
+    "type": "learned",
+    "finding": "**AA_SIGNAL_MATCH_HISTORY** is the dominant table with 2.03B records and 757M unique visitor IDs, suggesting it's the primary audience matching dataset"
+  },
+  {
+    "type": "learned",
+    "finding": "**CLOSED_LOOP_DATA** has 679M records but the highest unique AA_ID count (212M), indicating rich user-level attribution data"
+  },
+  {
+    "type": "learned",
+    "finding": "**LAL_AA_FIELDS_EXTRACT** contains 490M records with 1:1 AA_ID mapping (no duplicates), likely a reference/lookup table"
+  },
+  {
+    "type": "learned",
+    "finding": "Data freshness varies significantly: CLOSED_LOOP_DATA spans 2.7 months while others cover ~2 weeks"
+  },
+  {
+    "type": "learned",
+    "finding": "Limited title diversity: most tables cover 45-2,373 titles, but visitor scale is massive (18M-757M unique)"
+  },
+  {
+    "type": "implications",
+    "finding": "This is a large-scale audience measurement platform processing billions of interactions"
+  },
+  {
+    "type": "implications",
+    "finding": "The 3-4 data providers per table suggests a multi-source data integration approach"
+  },
+  {
+    "type": "implications",
+    "finding": "High visitor-to-AA_ID ratios (especially 757M visitors vs 155M AA_IDs in match history) indicate significant cross-device/identity resolution"
+  },
+  {
+    "type": "implications",
+    "finding": "REMAIL_LOG's smaller scale (45M records, 64 titles) suggests it's campaign-specific rather than comprehensive tracking"
+  },
+  {
+    "type": "next",
+    "finding": "Investigate the relationship between AA_ID and VISITOR_ID across tables to understand identity resolution effectiveness"
+  },
+  {
+    "type": "next",
+    "finding": "Examine TITLE_ID overlap patterns to identify core vs. niche content properties"
+  },
+  {
+    "type": "next",
+    "finding": "Analyze DATA_PROVIDER_ID distribution to understand data source contributions"
+  },
+  {
+    "type": "next",
+    "finding": "Deep-dive into LAL_AA_FIELDS_EXTRACT structure since it appears to be a comprehensive user profile table"
+  }
+]
+
+Based on the schema and previous exploration, generate:
+1. The next SQL query to run (must be valid Snowflake SQL)
+2. Your reasoning for choosing this query
+
+Format your response as a JSON object with these keys:
+- sql: The SQL query to execute
+- reasoning: Your detailed reasoning for this query, explaining what you hope to learn
+
+IMPORTANT GUIDELINES:
+- Focus on understanding data coverage patterns and blind spots
+- Look for interesting relationships between entities
+- Seek to understand where data is rich vs. sparse
+- Make each query build on what you've learned from previous ones
+- Avoid repetitive queries that don't add new insights
+- Ensure queries are valid Snowflake SQL
+- Use LIMIT clauses to keep result sets manageable
+
+JSON RESPONSE:

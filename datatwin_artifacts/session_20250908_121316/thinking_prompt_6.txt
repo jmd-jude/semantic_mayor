@@ -1,0 +1,65 @@
+You have just run the following SQL query as part of your database exploration:
+
+```sql
+SELECT 
+  AGE,
+  HH_INCOME,
+  NET_WORTH,
+  COUNT(*) as record_count,
+  ROUND(COUNT(*) * 100.0 / 90424, 2) as pct_of_records,
+  COUNT(DISTINCT INDIVIDUALID) as unique_individuals,
+  SUM(TARGET) as successful_targets,
+  ROUND(SUM(TARGET) * 100.0 / COUNT(*), 2) as success_rate_pct,
+  ROUND(AVG(CONFIDENCE_LEVEL), 2) as avg_confidence
+FROM DM_CAMPAIGN
+WHERE AGE IS NOT NULL AND HH_INCOME IS NOT NULL AND NET_WORTH IS NOT NULL
+GROUP BY AGE, HH_INCOME, NET_WORTH
+ORDER BY success_rate_pct DESC, record_count DESC
+LIMIT 20
+```
+
+Your initial reasoning was:
+After discovering that homeowner status '8' is a premium segment with 2x higher success rates, I want to explore the wealth/income dimensions to understand what drives campaign success beyond homeownership. This query will reveal:
+
+1. **Wealth-based segmentation patterns**: How age, income, and net worth combinations correlate with campaign success rates
+2. **Data coverage assessment**: Check for missing values in these key demographic fields and understand data completeness
+3. **Premium customer identification**: See if high-income/high-net-worth segments show similar outperformance to homeowner code '8'
+4. **Confidence score correlation**: Determine if wealth indicators also correlate with higher model confidence like homeowner status did
+5. **Segment size analysis**: Understand the volume vs. quality trade-offs across different wealth segments
+
+This builds directly on our homeowner findings by expanding into the financial demographic dimensions. Since these are TEXT fields (surprisingly), I expect to see categorical values that may need decoding, similar to the homeowner codes. The combination of age + income + net worth should reveal the most valuable customer archetypes for targeting, helping explain why certain segments achieve 2-3x baseline success rates.
+
+Limiting to 20 results will show the top-performing segments while keeping the output manageable for analysis.
+
+The query returned a DataFrame with 20 rows and 9 columns.
+Here's a sample of the results (showing first 5 rows):
+
+```
+     AGE HH_INCOME NET_WORTH  RECORD_COUNT PCT_OF_RECORDS  UNIQUE_INDIVIDUALS  SUCCESSFUL_TARGETS SUCCESS_RATE_PCT AVG_CONFIDENCE
+0  45-54         R         A             1           0.00                   1                   1           100.00           0.00
+1    75+         G         H             7           0.01                   6                   2            28.57           0.00
+2  25-34         E         G            10           0.01                   7                   2            20.00           0.20
+3  45-54         R         F             5           0.01                   5                   1            20.00           0.00
+4  25-34         Q         F             6           0.01                   5                   1            16.67           0.00
+```
+
+And some basic statistics (limited to prevent context overflow):
+```
+       RECORD_COUNT  UNIQUE_INDIVIDUALS  SUCCESSFUL_TARGETS
+count      20.00000           20.000000           20.000000
+mean       17.60000           13.600000            1.700000
+std        20.37129           15.682374            1.380313
+min         1.00000            1.000000            1.000000
+25%         7.75000            6.000000            1.000000
+50%         9.50000            7.500000            1.000000
+75%        17.25000           14.250000            2.000000
+max        84.00000           68.000000            6.000000
+```
+
+Based on these results, provide your analysis in this format:
+1. What we learned: Key insights from this query
+2. Implications: What these results tell us about the data structure or business patterns
+3. Next directions: What areas these results suggest we should explore next
+
+Make your analysis specific to the actual data you see in the results, referring to concrete values and patterns.
+Keep your response concise to avoid context length issues in future queries.
