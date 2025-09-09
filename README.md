@@ -47,7 +47,6 @@ Create a `.env` file in the project root with your credentials:
 # Snowflake Configuration
 SNOWFLAKE_ACCOUNT=your_account
 SNOWFLAKE_USERNAME=your_username
-SNOWFLAKE_PASSWORD=your_password  # Or use private key
 SNOWFLAKE_DATABASE=your_database
 SNOWFLAKE_WAREHOUSE=your_warehouse
 SNOWFLAKE_SCHEMA=your_schema
